@@ -169,12 +169,17 @@ h1
   margin-top: -1px
 
 
-@keyframes out 
+@keyframes str 
   0% 
     width: 0
   100% 
     width: 110%
 
+@keyframes unstr 
+  0% 
+    width: 110%
+  100% 
+    width: 0
 
 .strike
   &:after
@@ -182,7 +187,18 @@ h1
     position: absolute
     height: 2px
     background: $davys-gray
-    animation: out 0.3s 
+    animation: str 0.3s 
     width: 110%
+    top: 55%
+    left: -5%
+
+.unstrike
+  &:after
+    content: ""
+    position: absolute
+    height: 2px
+    background: $davys-gray
+    animation: unstr 0.3s 
+    width: 0%
     top: 55%
     left: -5%
