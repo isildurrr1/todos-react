@@ -5,6 +5,7 @@ $battleship-gray: #808f85
 $celadon: #91c499
 $linen: #f2e9dc
 $pear: #cfd11a
+$sea-green: #4c956c
 
 :root
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
@@ -33,10 +34,11 @@ h1
   left: 50%
   transform: translate(-50%, -10%)
   width: 300px
-  min-height: 500px
+  min-height: 150px
   border-radius: 10px
   box-shadow: 10px 10px 50px $davys-gray
   background-color: $linen
+  padding-bottom: 25px
 
 .header
   height: 80px
@@ -81,6 +83,7 @@ h1
 
 .card__text
   margin: auto 10px
+  position: relative
 
 
 
@@ -135,3 +138,47 @@ h1
     opacity: 0
     transition: opacity 0.25s ease
 
+.add 
+  position: absolute
+  bottom: -25px
+  left: 125px
+  cursor: pointer
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  border: none
+  background-color: $sea-green
+  pointer-events: auto
+  transition: transform 0.3s
+  &:active
+    transform: scale(0.9)
+
+.span
+  transition: all 0.3s
+  height: 2px
+  background-color: white
+  display: block
+  width: 20px
+
+.add__first-span
+  transform: rotate(90deg)
+  margin: auto
+  margin-top: 1px
+.add__second-span
+  transform: rotate(0deg)
+  margin: auto
+  margin-top: -1px
+
+
+
+.strike
+  &:after
+    content: ""
+    position: absolute
+    height: 2px
+    background: black
+    animation: out 0.7s cubic-bezier(1, 0, 0.58, 0.97) 1 both
+    width: 100%
+    top: 55%
+    left: 0%
+    transform: translateY(-50%)
