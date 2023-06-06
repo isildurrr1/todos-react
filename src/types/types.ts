@@ -5,3 +5,7 @@ export interface CardProps {
 export interface MainProps {
   data: CardProps[]
 }
+
+export interface PopupProps {
+  isOpen: boolean | null
+}
