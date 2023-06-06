@@ -7,7 +7,7 @@ import { CardProps } from "../types/types";
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
   const cards: CardProps[] = [
-    // {text: "LOOOOL"},
+    {text: "LOOOOL"},
     // {text: "prikol"},
     // {text: "prikol"},
     // {text: "prikol"}
