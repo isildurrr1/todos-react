@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Main from "./Main";
+import Popup from "./Popup";
 import { CardProps } from "../types/types";
 
 const App: React.FC = () => {
@@ -20,6 +21,7 @@ const App: React.FC = () => {
           <span className="span add__first-span"></span>
           <span className="span add__second-span"></span>
         </button>
+        <Popup/>
       </div>
     </div>
   )

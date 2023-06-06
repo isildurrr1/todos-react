@@ -10,7 +10,7 @@ const Card = ({text}: CardProps) => {
         <div className="checkbox__checkmark"/>
       </label>
       <div className="card__delete-overlay">
-        <span className={`card__text ${check === null ? '' : check ? 'strike' : 'unstrike'}`}>{text}</span>
+        <span className={` card__text ${check === null ? '' : check ? 'strike card__text-opacity' : 'unstrike'}`}>{text}</span>
         <button className="card__delete" type="button"/>
       </div>
     </div>

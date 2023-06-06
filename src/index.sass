@@ -84,6 +84,8 @@ h1
   margin: auto 10px
   position: relative
 
+.card__text-opacity
+  color: rgb(35%, 35%, 35%, 0.5)
 
 
 
@@ -149,6 +151,7 @@ h1
   background-color: $sea-green
   pointer-events: auto
   transition: transform 0.3s
+  z-index: 4
   &:active
     transform: scale(0.9)
 
@@ -202,3 +205,72 @@ h1
     width: 0%
     top: 55%
     left: -5%
+
+.popup
+  border-radius: 10px
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background-color: rgba(0, 0, 0, 0.3)
+  visibility: hidden
+  opacity: 0
+  transition: visibility 0.2s, opacity 0.2s linear
+  z-index: 3
+
+.popup_opened 
+  visibility: visible
+  opacity: 1
+  transition: visibility 0.2s, opacity 0.2s linear
+
+.popup__container 
+  position: relative
+  top: 60%
+  left: 50%
+  transform: translate(-50%, -50%)
+  max-width: 280px
+  min-height: 150px
+  border-radius: 10px
+  background-color: $linen
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15)
+  display: flex
+
+.popup__form
+  display: flex
+  flex-direction: column
+  margin: auto
+  width: 85%
+  height: 110px
+  gap: 20px
+
+.popup__title 
+  font-style: normal
+  font-weight: 600
+  font-size: 15px
+  margin: 0
+
+.popup__input
+  display: block
+  height: 30px
+  border: 1px $celadon solid
+  border-radius: 3px
+  background-color: $linen
+  font-size: 13px
+  padding: 0 0 2px 15px
+  color: $davys-gray
+  &::placeholder
+    color: $celadon
+
+.popup__submit
+  padding: 0
+  background-color: $linen
+  color: $celadon
+  border: none
+  margin-left: auto
+  font-weight: 500
+  font-size: 15px
+  cursor: pointer
+  transition: opacity 0.3s
+  &:hover
+    opacity: 0.6
