@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <div className="todo__container">
         <Header/>
         <Main data={cards}/>
-        <button onClick={openPopup} type="button" className="add">
+        <button onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-notactive'}`}>
           <span className="span add__first-span"></span>
           <span className="span add__second-span"></span>
         </button>

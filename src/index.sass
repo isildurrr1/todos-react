@@ -155,6 +155,20 @@ h1
   &:active
     transform: scale(0.9)
 
+.add-active
+  background-color: red
+  .add__first-span
+    animation: animFirstSpin 0.3s both
+  .add__second-span
+    animation: animSecondSpin 0.3s both
+
+.add-notactive
+  .add__first-span
+    animation: animFirstReverseSpin 0.3s both
+  .add__second-span
+    animation: animSecondReverseSpin 0.3s both
+
+
 .span
   transition: all 0.3s
   height: 2px
@@ -170,6 +184,33 @@ h1
   transform: rotate(0deg)
   margin: auto
   margin-top: -1px
+
+@keyframes animFirstSpin 
+  0% 
+    transform: rotate(90deg)
+  100% 
+    transform: rotate(135deg)
+
+@keyframes animSecondSpin 
+  0% 
+    transform: rotate(0deg)
+  100% 
+    transform: rotate(45deg)
+    margin-top: -2px
+
+@keyframes animFirstReverseSpin
+  0% 
+    transform: rotate(135deg)
+  100% 
+    transform: rotate(90deg)
+
+@keyframes animSecondReverseSpin
+  0% 
+    transform: rotate(45deg)
+    margin-top: -2px
+  100% 
+    transform: rotate(0deg)
+    margin-top: -1px
 
 
 @keyframes str 
