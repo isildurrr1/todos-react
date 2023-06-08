@@ -1,9 +1,17 @@
-export interface CardProps {
+export interface Card {
   text: string
+  id: number
+}
+
+export interface CardProps {
+  card: Card,
+  text: string,
+  handleCardDelete: Function
 }
 
 export interface MainProps {
-  data: CardProps[]
+  data: Card[],
+  onCardDelete: Function
 }
 
 export interface PopupProps {

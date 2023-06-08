@@ -1,12 +1,12 @@
 import Card from "./Card";
 import { MainProps } from "../types/types";
 
-const Main = ({data}: MainProps) => {
+const Main = ({data, onCardDelete}: MainProps) => {
   return(
     <main className="main">
       {!data.length && <div className="todo__empty">No Tasks</div> }
       {data.map((card) => (
-        <Card text={card.text}/>
+        <Card key={card.id} card={card} text={card.text} handleCardDelete={onCardDelete}/>
       ))}
     </main>
   );

@@ -1,28 +1,37 @@
 import Header from "./Header";
 import Main from "./Main";
 import Popup from "./Popup";
-import {useState} from 'react'
-import { CardProps } from "../types/types";
+import { useState } from 'react'
+import { Card } from "../types/types";
 
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
-  const cards: CardProps[] = [
-    {text: "LOOOOL"},
-    // {text: "prikol"},
-    // {text: "prikol"},
+  const [cards, setCards] = useState<Card[]>([
+    { 
+      id: 0,
+      text: "LOOOOL"
+    },
+    { 
+      id: 1,
+      text: "prikol"
+    },
     // {text: "prikol"}
-  ]
-  const openPopup = () => {isOpen ? setIsOpen(false) : setIsOpen(true)}
+  ])
+  const handleCardDelete = (card: Card) => {
+    setCards(cards.filter(e => e !== card));
+    console.log(cards);
+  }
+  const openPopup = () => { isOpen ? setIsOpen(false) : setIsOpen(true) }
   return (
     <div className="todo">
       <div className="todo__container">
-        <Header/>
-        <Main data={cards}/>
-        <button onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-notactive'}`}>
+        <Header />
+        <Main data={cards} onCardDelete={handleCardDelete} />
+        <button onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-inactive'}`}>
           <span className="span add__first-span"></span>
           <span className="span add__second-span"></span>
         </button>
-        <Popup isOpen={isOpen}/>
+        <Popup isOpen={isOpen} />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-@import url(./vendor/normalize.scss)
+@import ./vendor/normalize
 // base colors
 $davys-gray: #595959
 $battleship-gray: #808f85
@@ -16,8 +16,7 @@ $sea-green: #4c956c
   width: 100%
   height: 100%
 
-
-h1 
+h1
   font-size: 3.2em
   line-height: 1.1
 
@@ -66,7 +65,7 @@ h1
 
 .card__delete
   opacity: 0
-  transition: opacity .5s 
+  transition: opacity .5s
   margin-left: auto
   background: url("./image/trash-icon-hover.svg") center no-repeat
   background-size: 100% auto
@@ -74,7 +73,7 @@ h1
   width: 25px
   background-size: 100% auto
   cursor: pointer
-  &:hover 
+  &:hover
     opacity: 1 !important
   &:active
     width: 23px
@@ -86,8 +85,6 @@ h1
 
 .card__text-opacity
   color: rgb(35%, 35%, 35%, 0.5)
-
-
 
 .checkbox
   margin: auto 0
@@ -126,20 +123,20 @@ h1
   background-color: #eee
   transition: background-color 0.25s ease
   border-radius: 11px
-  &:after 
+  &:after
     content: ""
     position: absolute
     left: 7px
     top: 4px
     width: 4px
     height: 8px
-    border: solid $davys-gray 
+    border: solid $davys-gray
     border-width: 0 2px 2px 0
     transform: rotate(45deg)
     opacity: 0
     transition: opacity 0.25s ease
 
-.add 
+.add
   position: absolute
   bottom: -25px
   left: 125px
@@ -162,12 +159,11 @@ h1
   .add__second-span
     animation: animSecondSpin 0.3s both
 
-.add-notactive
+.add-inactive
   .add__first-span
     animation: animFirstReverseSpin 0.3s both
   .add__second-span
     animation: animSecondReverseSpin 0.3s both
-
 
 .span
   transition: all 0.3s
@@ -185,44 +181,43 @@ h1
   margin: auto
   margin-top: -1px
 
-@keyframes animFirstSpin 
-  0% 
+@keyframes animFirstSpin
+  0%
     transform: rotate(90deg)
-  100% 
+  100%
     transform: rotate(135deg)
 
-@keyframes animSecondSpin 
-  0% 
+@keyframes animSecondSpin
+  0%
     transform: rotate(0deg)
-  100% 
+  100%
     transform: rotate(45deg)
     margin-top: -2px
 
 @keyframes animFirstReverseSpin
-  0% 
+  0%
     transform: rotate(135deg)
-  100% 
+  100%
     transform: rotate(90deg)
 
 @keyframes animSecondReverseSpin
-  0% 
+  0%
     transform: rotate(45deg)
     margin-top: -2px
-  100% 
+  100%
     transform: rotate(0deg)
     margin-top: -1px
 
-
-@keyframes str 
-  0% 
+@keyframes str
+  0%
     width: 0
-  100% 
+  100%
     width: 110%
 
-@keyframes unstr 
-  0% 
+@keyframes unstr
+  0%
     width: 110%
-  100% 
+  100%
     width: 0
 
 .strike
@@ -231,7 +226,7 @@ h1
     position: absolute
     height: 2px
     background: $davys-gray
-    animation: str 0.3s 
+    animation: str 0.3s
     width: 110%
     top: 55%
     left: -5%
@@ -242,26 +237,26 @@ h1
     position: absolute
     height: 2px
     background: $davys-gray
-    animation: unstr 0.3s 
+    animation: unstr 0.3s
     width: 0%
     top: 55%
     left: -5%
 
-@keyframes popupShow 
+@keyframes popupShow
   0%
     transform: translateY(50px)
-    opacity:0
+    opacity: 0
   100%
     transform: translateY(0)
-    opacity:1
+    opacity: 1
 
 @keyframes popupHide
   0%
     transform: translateY(0)
-    opacity:1
+    opacity: 1
   100%
     transform: translateY(50px)
-    opacity:0
+    opacity: 0
 
 .popup
   border-radius: 10px
@@ -276,12 +271,12 @@ h1
   z-index: 2
   transition: visibility 0.2s, opacity 0.2s linear
 
-.popup_opened 
+.popup_opened
   visibility: visible
   opacity: 1
   transition: visibility 0.2s, opacity 0.2s linear
 
-.popup__container 
+.popup__container
   position: absolute
   left: 10px
   bottom: 40px
@@ -307,7 +302,7 @@ h1
   height: 110px
   gap: 20px
 
-.popup__title 
+.popup__title
   font-style: normal
   font-weight: 600
   font-size: 15px
@@ -342,5 +337,5 @@ h1
   width: 100%
   text-align: center
   margin-top: 30px
-  font-size: 60px 
+  font-size: 60px
   opacity: 0.3
