@@ -9,7 +9,7 @@ const Popup = ({isOpen, onSubmit}: PopupProps) => {
   const addNewCard = (event: SyntheticEvent): void => {
     event.preventDefault();
     setTask('');
-    onSubmit(task)
+    onSubmit(task);
   }
   return(
   <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>

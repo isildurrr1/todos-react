@@ -1,15 +1,25 @@
 import { useState } from "react";
 import { CardProps } from "../types/types";
-const Card = ({card, text, handleCardDelete}: CardProps) => {
-  const[check, setCheck] = useState<boolean | null>(null);
-  const checkHandler = () => {check ? setCheck(false) : setCheck(true);}
+const Card = ({card, text, handleCardDelete, hadleCardCheck}: CardProps) => {
+  const[check, setCheck] = useState<boolean | null>(card.checked ? true : null);
+  const checkHandler = () => {
+    if (!check) {
+      setCheck(true);
+      card.checked = true;
+      hadleCardCheck(card);
+    } else {
+      setCheck(false);
+      card.checked = false;
+      hadleCardCheck(card);
+    }
+  }
   const deleteCard = () => {
     handleCardDelete(card);
   }
   return (
     <div className="card">
       <label className="checkbox">
-        <input onClick={checkHandler} type="checkbox" className="checkbox__input"/>
+        <input onChange={checkHandler} checked={check === null ? false : check} type="checkbox" className="checkbox__input"/>
         <div className="checkbox__checkmark"/>
       </label>
       <div className="card__delete-overlay">
