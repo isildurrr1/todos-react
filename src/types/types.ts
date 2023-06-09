@@ -15,5 +15,6 @@ export interface MainProps {
 }
 
 export interface PopupProps {
-  isOpen: boolean | null
+  isOpen: boolean | null,
+  onSubmit: Function
 }

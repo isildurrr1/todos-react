@@ -14,12 +14,15 @@ const App: React.FC = () => {
     { 
       id: 1,
       text: "prikol"
-    },
+    }
     // {text: "prikol"}
   ])
+  const addNewCard = (text: string) => {
+    setCards([...cards, {id: cards.length, text: text}])
+    setIsOpen(false)
+  }
   const handleCardDelete = (card: Card) => {
     setCards(cards.filter(e => e !== card));
-    console.log(cards);
   }
   const openPopup = () => { isOpen ? setIsOpen(false) : setIsOpen(true) }
   return (
@@ -31,7 +34,7 @@ const App: React.FC = () => {
           <span className="span add__first-span"></span>
           <span className="span add__second-span"></span>
         </button>
-        <Popup isOpen={isOpen} />
+        <Popup isOpen={isOpen} onSubmit={addNewCard}/>
       </div>
     </div>
   )
