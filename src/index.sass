@@ -1,18 +1,20 @@
 @import ./vendor/normalize
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap')
 // base colors
-$davys-gray: #595959
-$battleship-gray: #808f85
-$celadon: #91c499
-$linen: #f2e9dc
-$pear: #cfd11a
-$sea-green: #4c956c
+$gradient-bg-top: #6896A9
+$gradient-bg-bottom: #325477
+$container-bg: #1D3354
+$checkbox-active: #87A3BC
+$add-btn-green: #5C935B
+$add-btn-red: #E84855
+$font-color: #E9FFF9
 
 :root
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
+  font-family: Open Sans, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
   line-height: 1.5
   font-weight: 400
-  color: $davys-gray
-  background-image: linear-gradient(to bottom right, $celadon, $davys-gray)
+  color: $font-color
+  background-image: linear-gradient(to bottom right, $gradient-bg-top, $gradient-bg-bottom)
   width: 100%
   height: 100%
 
@@ -35,15 +37,9 @@ h1
   width: 300px
   min-height: 250px
   border-radius: 10px
-  box-shadow: 10px 10px 50px $davys-gray
-  background-color: $linen
+  box-shadow: 5px 5px 10px $gradient-bg-bottom
+  background-color: $container-bg
   padding-bottom: 25px
-
-.header
-  height: 80px
-  box-sizing: border-box
-  padding: 10px
-  border-bottom: 1px $battleship-gray solid
 
 .card
   display: flex
@@ -67,7 +63,7 @@ h1
   opacity: 0
   transition: opacity .5s
   margin-left: auto
-  background: url("./image/trash-icon-hover.svg") center no-repeat
+  background: url("./image/trash-icon.svg") center no-repeat
   background-size: 100% auto
   border: 0
   width: 25px
@@ -84,7 +80,7 @@ h1
   position: relative
 
 .card__text-opacity
-  color: rgb(35%, 35%, 35%, 0.5)
+  color: rgba(233, 255, 249, 0.5)
 
 .checkbox
   margin: auto 0
@@ -102,7 +98,7 @@ h1
   height: 0
   width: 0
   &:checked ~ .checkbox__checkmark
-    background-color: #f7cb15
+    background-color: $checkbox-active
     &:after
       opacity: 1
 
@@ -110,11 +106,11 @@ h1
   ~ .checkbox__checkmark
     background-color: #eee
   &:checked ~ .checkbox__checkmark
-    background-color: #f7cb15
+    background-color: $checkbox-active
 
 .checkbox__checkmark
   box-sizing: content-box
-  border: 1px $davys-gray solid
+  border: 1px $gradient-bg-bottom solid
   position: absolute
   top: 1px
   left: 0
@@ -130,7 +126,7 @@ h1
     top: 4px
     width: 4px
     height: 8px
-    border: solid $davys-gray
+    border: solid $gradient-bg-bottom
     border-width: 0 2px 2px 0
     transform: rotate(45deg)
     opacity: 0
@@ -145,15 +141,16 @@ h1
   height: 50px
   border-radius: 50%
   border: none
-  background-color: $sea-green
+  background-color: $add-btn-green
   pointer-events: auto
   transition: transform 0.3s
   z-index: 3
+  box-shadow: 0 5px 10px $gradient-bg-bottom
   &:active
     transform: scale(0.9)
 
 .add-active
-  background-color: red
+  background-color: $add-btn-red
   .add__first-span
     animation: animFirstSpin 0.3s both
   .add__second-span
@@ -225,7 +222,7 @@ h1
     content: ""
     position: absolute
     height: 2px
-    background: $davys-gray
+    background: rgba(233, 255, 249, 0.7)
     animation: str 0.3s
     width: 110%
     top: 55%
@@ -236,7 +233,7 @@ h1
     content: ""
     position: absolute
     height: 2px
-    background: $davys-gray
+    background: rgba(233, 255, 249, 0.7)
     animation: unstr 0.3s
     width: 0%
     top: 55%
@@ -283,7 +280,7 @@ h1
   width: 280px
   height: 150px
   border-radius: 10px
-  background-color: $linen
+  background-color: $container-bg
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15)
   display: flex
   z-index: 4
@@ -311,19 +308,19 @@ h1
 .popup__input
   display: block
   height: 30px
-  border: 1px $celadon solid
+  border: 1px $gradient-bg-top solid
   border-radius: 3px
-  background-color: $linen
+  background-color: $container-bg
   font-size: 13px
   padding: 0 0 2px 15px
-  color: $davys-gray
+  color: $font-color
   &::placeholder
-    color: $celadon
+    color: $gradient-bg-top
 
 .popup__submit
   padding: 0
-  background-color: $linen
-  color: $celadon
+  background-color: $container-bg
+  color: $gradient-bg-top
   border: none
   margin-left: auto
   font-weight: 500
@@ -339,3 +336,57 @@ h1
   margin-top: 30px
   font-size: 60px
   opacity: 0.3
+
+.header
+  user-select: none
+  height: 80px
+  box-sizing: border-box
+  padding: 10px
+  border-bottom: 1px $gradient-bg-top solid
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+
+.header__temp
+  margin: 0
+  display: inline
+  font-size: 50px
+  font-weight: normal
+  display: flex
+  flex-direction: column
+  justify-content: end
+  line-height: 45px
+  letter-spacing: -2px
+
+.header__location
+  display: flex
+  flex-direction: column
+  justify-content: end
+  padding-left: 14px
+
+.header__info
+  display: block
+  font-size: 12px
+  line-height: 16px
+
+.header__weather-info
+  min-width: 10px
+  display: flex
+  flex-direction: row
+
+.header__geo
+  fill: $font-color
+  height: 8px
+  width: 8px
+  margin-right: 5px
+
+.header__weather-ico
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  padding-right: 8px
+
+.header__ico-image 
+  width: 45px
+  height: 45px
+  margin: auto

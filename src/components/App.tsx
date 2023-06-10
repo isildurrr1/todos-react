@@ -14,7 +14,9 @@ const App: React.FC = () => {
   }, [cards])
 
   const addNewCard = (text: string) => {
-    setCards([...cards, {id: cards.length, text: text, checked: null}])
+    if(text !== '') {
+      setCards([...cards, {id: cards.length !== 0 ? cards[cards.length - 1].id + 1 : 0, text: text, checked: null}])
+    }
     setIsOpen(false);
   }
 
