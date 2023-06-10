@@ -20,7 +20,6 @@ const App: React.FC = () => {
 
   const checkCard = (card: Card) => {
     setCards(cards.map((c) => c.id === card.id ? card : c))
-    console.log(cards)
   }
 
   const handleCardDelete = (card: Card) => {
