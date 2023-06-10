@@ -35,7 +35,7 @@ h1
   left: 50%
   transform: translate(-50%, -10%)
   width: 300px
-  min-height: 250px
+  min-height: 200px
   border-radius: 10px
   box-shadow: 5px 5px 10px $gradient-bg-bottom
   background-color: $container-bg
@@ -148,6 +148,8 @@ h1
   box-shadow: 0 5px 10px $gradient-bg-bottom
   &:active
     transform: scale(0.9)
+  &:disabled
+    transform: scale(0)
 
 .add-active
   background-color: $add-btn-red
@@ -333,7 +335,7 @@ h1
 .todo__empty
   width: 100%
   text-align: center
-  margin-top: 30px
+  margin-top: 15px
   font-size: 60px
   opacity: 0.3
 

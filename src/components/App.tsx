@@ -34,7 +34,7 @@ const App: React.FC = () => {
       <div className="todo__container">
         <Header />
         <Main data={cards} onCardDelete={handleCardDelete} onCardCheck={checkCard}/>
-        <button onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-inactive'}`}>
+        <button disabled={cards.length > 10} onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-inactive'}`}>
           <span className="span add__first-span"></span>
           <span className="span add__second-span"></span>
         </button>
