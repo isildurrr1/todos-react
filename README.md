@@ -11,5 +11,5 @@ User tasks should be stored in localStorage.
 - Vite
 ## API
 - Calculation of the user's city by IP [ipbase](https://ipbase.com)
-- Weather query for the user's city [Weatherstack](https://weatherstack.com)
+- Weather query for the user's city [Weatherapi](https://www.weatherapi.com/)
 
