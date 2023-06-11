@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { ReactComponent as GeoSvg } from 'src/image/geo.svg'
 const Header: React.FC = () => {
-  
+
   const ipApi: string = 'https://api.ipify.org/';
-  const locationApi: string = 'http://ip-api.com/json/';
-  const weatherApi: string = 'http://api.weatherapi.com/v1/current.json?key=40742ca164b54fa682350707231006&q='
+  const locationApi: string = 'https://ipapi.co/';
+  const weatherApi: string = 'https://weatherapi-com.p.rapidapi.com/current.json?q='
   const date: Date  = new Date();
   const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -22,12 +22,20 @@ const Header: React.FC = () => {
       .then(ip => ip.text())
       .then(ip => usersIP = ip)
       .then(() => {
-        fetch(`${locationApi}${usersIP}`)
+        fetch(`${locationApi}${usersIP}/json`)
         .then(data => data.json())
         .then(data => {
           const city = data.city;
           setUsersCity(data.city);
-          fetch(`${weatherApi}${city}`)
+          fetch(`${weatherApi}${city}`,
+            {
+              method: 'GET',
+              headers: {
+                'X-RapidAPI-Key': '843c951890mshf9ad6e12819402ap1be309jsn943965c5efb4',
+                'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+	            }
+            }
+          )
             .then(res => {
               return res.json();
             })
