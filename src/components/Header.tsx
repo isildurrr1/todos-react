@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { ReactComponent as GeoSvg } from '../image/geo.svg'
+import { ReactComponent as GeoSvg } from 'src/image/geo.svg'
 const Header: React.FC = () => {
-  const locationApi: string = 'https://api.ipbase.com/v2/info?apikey=yS0jC6imFFBUlQuVbJtUlgSdfNWQzRkRbUxOO3HO';
+  
+  const ipApi: string = 'https://api.ipify.org/';
+  const locationApi: string = 'http://ip-api.com/json/';
   const weatherApi: string = 'http://api.weatherapi.com/v1/current.json?key=40742ca164b54fa682350707231006&q='
   const date: Date  = new Date();
   const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -10,28 +12,32 @@ const Header: React.FC = () => {
   const dayNow: string = days[date.getDay()];
   const todaysDate: number = date.getDate();
   const [temp, setTemp] = useState(0);
-  const [usersCity, setUsersCity] = useState('');
+  const [usersCity, setUsersCity] = useState('Your City');
   const [weatherIco, setWeatherIco] = useState('');
   const [weatherDiscription, setWeatherDiscription] = useState('');
+  let usersIP: Promise<string> | string = ''
 
   useEffect(() => {
-    fetch(locationApi)
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        const city = data.data.location.city.name
-        setUsersCity(city);
-        fetch(`${weatherApi}${city}`)
-          .then(res => {
-            return res.json();
-          })
-          .then(data => {
-            setTemp(data.current.temp_c);
-            setWeatherIco(data.current.condition.icon);
-            setWeatherDiscription(data.current.condition.text);
-          })
-      })
+    fetch(ipApi)
+      .then(ip => ip.text())
+      .then(ip => usersIP = ip)
+      .then(() => {
+        fetch(`${locationApi}${usersIP}`)
+        .then(data => data.json())
+        .then(data => {
+          const city = data.city;
+          setUsersCity(data.city);
+          fetch(`${weatherApi}${city}`)
+            .then(res => {
+              return res.json();
+            })
+            .then(data => {
+              setTemp(data.current.temp_c);
+              setWeatherIco(data.current.condition.icon);
+              setWeatherDiscription(data.current.condition.text);
+            })
+        })
+        })
   },[])
 
   return(

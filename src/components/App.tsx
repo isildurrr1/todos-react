@@ -2,11 +2,11 @@ import Header from "./Header";
 import Main from "./Main";
 import Popup from "./Popup";
 import { useState, useEffect } from 'react'
-import { Card } from "../types/types";
+import { Card } from 'src/types/types';
 
 const App: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean | null>(null);
-  const initialCards = JSON.parse(localStorage.getItem('cards') || '{}');
+  const initialCards = JSON.parse(localStorage.getItem('cards') || '[]');
   const [cards, setCards] = useState<Card[]>(initialCards)
 
   useEffect(() => {
@@ -15,7 +15,8 @@ const App: React.FC = () => {
 
   const addNewCard = (text: string) => {
     if(text !== '') {
-      setCards([...cards, {id: cards.length !== 0 ? cards[cards.length - 1].id + 1 : 0, text: text, checked: null}])
+      cards.length === 0 ? setCards([{id: 0, text: text, checked: null}]) 
+      : setCards([{id: cards[cards.length - 1].id + 1, text: text, checked: null}, ...cards])
     }
     setIsOpen(false);
   }

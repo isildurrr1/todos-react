@@ -1,5 +1,5 @@
-import { PopupProps } from "../types/types";
 import { SyntheticEvent, useState } from "react";
+import { PopupProps } from "src/types/types";
 const Popup = ({isOpen, onSubmit}: PopupProps) => {
   const [task, setTask] = useState<string>('');
   const changeTask = (event: SyntheticEvent): void => {

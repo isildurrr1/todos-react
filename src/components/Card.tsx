@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardProps } from "../types/types";
+import { CardProps } from "src/types/types";
 const Card = ({card, text, handleCardDelete, hadleCardCheck}: CardProps) => {
   const[check, setCheck] = useState<boolean | null>(card.checked ? true : null);
   const checkHandler = () => {
