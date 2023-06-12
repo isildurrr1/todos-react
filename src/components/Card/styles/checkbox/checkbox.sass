@@ -1,0 +1,13 @@
+.checkbox
+  margin: auto 0
+  height: 22px
+  display: inline-block
+  position: relative
+  padding-left: 22px
+  cursor: pointer
+  user-select: none
+  &:hover .checkbox__input
+    ~ .checkbox__checkmark
+      background-color: #eee
+    &:checked ~ .checkbox__checkmark
+      background-color: $checkbox-active

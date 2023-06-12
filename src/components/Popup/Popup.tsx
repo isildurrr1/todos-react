@@ -18,7 +18,7 @@ const Popup = ({ isOpen, onSubmit }: PopupProps) => {
 
   return (
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-      <div className={`popup__container ${isOpen ? 'show' : 'hide'}`}>
+      <div className={`popup__container ${isOpen ? 'popup__container_show' : 'popup__container_hide'}`}>
         <form action="popup__form" className="popup__form" onSubmit={addNewCard}>
           <h1 className="popup__title">Add Task</h1>
           <input type="text" value={task || ''} onChange={changeTask} name="task" id="task" className="popup__input" placeholder="Add a Task here" />

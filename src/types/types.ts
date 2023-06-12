@@ -1,3 +1,5 @@
+import React from "react"
+
 export interface Card {
   text: string,
   id: number,
@@ -20,4 +22,10 @@ export interface MainProps {
 export interface PopupProps {
   isOpen: boolean | null,
   onSubmit: Function
+}
+
+export interface AddButtonProps {
+  dataArray: Card[], 
+  onClick: React.MouseEventHandler, 
+  popupStatus: boolean | null
 }

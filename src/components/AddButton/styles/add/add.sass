@@ -1,0 +1,18 @@
+.add
+  position: absolute
+  bottom: -25px
+  left: 125px
+  cursor: pointer
+  width: 50px
+  height: 50px
+  border-radius: 50%
+  border: none
+  background-color: $add-btn-green
+  pointer-events: auto
+  transition: transform 0.3s
+  z-index: 3
+  box-shadow: 0 5px 10px $gradient-bg-bottom
+  &:active
+    transform: scale(0.9)
+  &:disabled
+    transform: scale(0)

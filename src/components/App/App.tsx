@@ -1,6 +1,7 @@
-import Header from "./Header";
-import Main from "./Main";
-import Popup from "./Popup";
+import AddButton from "../AddButton/AddButton";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Popup from "../Popup/Popup";
 import { useState, useEffect } from 'react'
 import { Card } from 'src/types/types';
 
@@ -18,7 +19,7 @@ const App: React.FC = () => {
   const addNewCard = (text: string) => {
     if (text !== '') {
       cards.length === 0 ? setCards([{ id: 0, text: text, checked: null }])
-        : setCards([{ id: cards[cards.length - 1].id + 1, text: text, checked: null }, ...cards])
+        : setCards([...cards, { id: cards[cards.length - 1].id + 1, text: text, checked: null }])
     }
     setIsOpen(false);
   }
@@ -41,10 +42,7 @@ const App: React.FC = () => {
       <div className="todo__container">
         <Header />
         <Main data={cards} onCardDelete={handleCardDelete} onCardCheck={checkCard} />
-        <button disabled={cards.length > 10} onClick={openPopup} type="button" className={`add ${isOpen ? 'add-active' : isOpen === null ? '' : 'add-inactive'}`}>
-          <span className="span add__first-span"></span>
-          <span className="span add__second-span"></span>
-        </button>
+        <AddButton dataArray={cards} onClick={openPopup} popupStatus={isOpen} />
         <Popup isOpen={isOpen} onSubmit={addNewCard} />
       </div>
     </div>

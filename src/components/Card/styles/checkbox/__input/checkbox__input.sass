@@ -1,0 +1,10 @@
+.checkbox__input
+  position: absolute
+  opacity: 0
+  cursor: pointer
+  height: 0
+  width: 0
+  &:checked ~ .checkbox__checkmark
+    background-color: $checkbox-active
+    &:after
+      opacity: 1

@@ -1,0 +1,23 @@
+.checkbox__checkmark
+  box-sizing: content-box
+  border: 1px $gradient-bg-bottom solid
+  position: absolute
+  top: 1px
+  left: 0
+  height: 20px
+  width: 20px
+  background-color: #eee
+  transition: background-color 0.25s ease
+  border-radius: 11px
+  &:after
+    content: ""
+    position: absolute
+    left: 7px
+    top: 4px
+    width: 4px
+    height: 8px
+    border: solid $gradient-bg-bottom
+    border-width: 0 2px 2px 0
+    transform: rotate(45deg)
+    opacity: 0
+    transition: opacity 0.25s ease

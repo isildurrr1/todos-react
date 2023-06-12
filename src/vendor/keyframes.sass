@@ -1,0 +1,54 @@
+@keyframes animFirstSpin
+  0%
+    transform: rotate(90deg)
+  100%
+    transform: rotate(135deg)
+
+@keyframes animSecondSpin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(45deg)
+    margin-top: -2px
+
+@keyframes animFirstReverseSpin
+  0%
+    transform: rotate(135deg)
+  100%
+    transform: rotate(90deg)
+
+@keyframes animSecondReverseSpin
+  0%
+    transform: rotate(45deg)
+    margin-top: -2px
+  100%
+    transform: rotate(0deg)
+    margin-top: -1px
+
+@keyframes str
+  0%
+    width: 0
+  100%
+    width: 110%
+
+@keyframes unstr
+  0%
+    width: 110%
+  100%
+    width: 0
+
+@keyframes popupShow
+  0%
+    transform: translateY(50px)
+    opacity: 0
+  100%
+    transform: translateY(0)
+    opacity: 1
+
+@keyframes popupHide
+  0%
+    transform: translateY(0)
+    opacity: 1
+  100%
+    transform: translateY(50px)
+    opacity: 0
