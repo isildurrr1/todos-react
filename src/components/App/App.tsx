@@ -18,8 +18,12 @@ const App: React.FC = () => {
   // function to add a new card
   const addNewCard = (text: string) => {
     if (text !== '') {
-      cards.length === 0 ? setCards([{ id: 0, text: text, checked: null }])
-        : setCards([...cards, { id: cards[cards.length - 1].id + 1, text: text, checked: null }])
+      setCards([...cards, 
+        { 
+          id: Math.random().toString(16).slice(5),
+          text: text, 
+          checked: null 
+        }])
     }
     setIsOpen(false);
   }

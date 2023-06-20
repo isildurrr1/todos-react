@@ -2,7 +2,7 @@ import React from "react"
 
 export interface Card {
   text: string,
-  id: number,
+  id: string,
   checked: boolean | null
 }
 
