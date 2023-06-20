@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { ReactComponent as GeoSvg } from 'src/image/geo.svg'
+import { ReactComponent as GeoSvg } from 'src/image/geo.svg';
+import Box from '@mui/material/Box';
+import LinearProgress from '@mui/material/LinearProgress';
 
 const Header: React.FC = () => {
   // API
-  const ipApi: string = 'https://api.ipify.org/'; // api to get user ip
-  const locationApi: string = 'https://ipapi.co/'; // api to get the user's city
-  const weatherApi: string = 'https://weatherapi-com.p.rapidapi.com/current.json?q=' // api for getting actual weather
+  const ipApi = 'https://api.ipify.org/'; // api to get user ip
+  const locationApi = 'https://ipapi.co/'; // api to get the user's city
+  const weatherApi = 'https://weatherapi-com.p.rapidapi.com/current.json?q=' // api for getting actual weather
   // DATE
   const date: Date = new Date(); // create a new date instance
   const days: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // array with days of the week
@@ -18,11 +20,12 @@ const Header: React.FC = () => {
   const [usersCity, setUsersCity] = useState('Your City'); // user city state
   const [weatherIco, setWeatherIco] = useState(''); // state weather icon
   const [weatherDiscription, setWeatherDiscription] = useState(''); // state weather description
-  // VARIABLES
-  let usersIP: Promise<string> | string = ''; // variable to store IP string
+  const [loading, setLoading] = useState(false);
 
   // we get weather data via ip when rendering the application
   useEffect(() => {
+    let usersIP: Promise<string> | string = ''; // variable to store IP string
+    setLoading(true);
     fetch(ipApi)
       .then(ip => ip.text())
       .then(ip => usersIP = ip)
@@ -48,6 +51,7 @@ const Header: React.FC = () => {
                 setTemp(data.current.temp_c);
                 setWeatherIco(data.current.condition.icon);
                 setWeatherDiscription(data.current.condition.text);
+                setLoading(false);
               })
           })
       })
@@ -55,19 +59,27 @@ const Header: React.FC = () => {
 
   return (
     <header className="header">
-      <div className="header__weather-info">
-        <h1 className="header__temp">{`${temp}°`}</h1>
-        <div className="header__location">
-          <span className="header__info">{`${dayNow},${todaysDate} ${monthNow}`}</span>
-          <span className="header__info">
-            <GeoSvg className="header__geo" />
-            {usersCity}</span>
+      {loading ?
+      <Box sx={{ width: '100%', margin: 'auto' }}>
+        <LinearProgress />
+      </Box>
+      :
+      <>
+        <div className="header__weather-info">
+          <h1 className="header__temp">{`${temp}°`}</h1>
+          <div className="header__location">
+            <span className="header__info">{`${dayNow},${todaysDate} ${monthNow}`}</span>
+            <span className="header__info">
+              <GeoSvg className="header__geo" />
+              {usersCity}</span>
+          </div>
         </div>
-      </div>
-      <div className="header__weather-ico">
-        <img src={weatherIco} alt="ico" className="header__ico-image" />
-        <span className="header__info">{weatherDiscription}</span>
-      </div>
+        <div className="header__weather-ico">
+          <img src={weatherIco} alt="ico" className="header__ico-image" />
+          <span className="header__info">{weatherDiscription}</span>
+        </div>
+      </>
+      }
     </header>
   );
 }

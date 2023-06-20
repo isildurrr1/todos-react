@@ -9,19 +9,19 @@ export interface Card {
 export interface CardProps {
   card: Card,
   text: string,
-  handleCardDelete: Function
-  hadleCardCheck: Function
+  handleCardDelete: (card: Card) => void,
+  hadleCardCheck: (card: Card) => void,
 }
 
 export interface MainProps {
   data: Card[],
-  onCardDelete: Function
-  onCardCheck: Function
+  onCardDelete: (card: Card) => void,
+  onCardCheck: (card: Card) => void,
 }
 
 export interface PopupProps {
   isOpen: boolean | null,
-  onSubmit: Function
+  onSubmit: (text: string) => void,
 }
 
 export interface AddButtonProps {
